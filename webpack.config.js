@@ -59,8 +59,8 @@ const config = {
 if(isDev){
     config.devtool = '#cheap-module-eval-source-map' // 调试代码时可以看到自己原本的代码，而不是编译后的
     config.devServer = {
-        port: 8000,
-        host: '0.0.0.0',
+        port: 8999,
+        host: 'localhost',
         overlay: {
             errors: true // 将webpack编译的错误显示在网页上面
         },
