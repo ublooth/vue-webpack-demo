@@ -4,13 +4,13 @@
         <input type="button" value="开始" @click="start"/>
         <input type="button" value="暂停" @click="suspend"/>
         <input type="button" value="继续" @click="cont"/>
-        <input type="button" value="重新" @click="again"/>
+        <input type="button" value="清除" @click="again"/>
     </div>
 </template>
 <script>
     export default {
         data() {
-             this.timer = null;
+            this.timer = null;
             return {
                 text: '计数器:' ,
                 num:'0',
@@ -22,7 +22,7 @@
                 // setInterval 
                 this.timer = window.setTimeout(() => {
                     this.num++;
-                    this.$emit("message",this.start());
+                    this.start();
                 },1000);
             },
             // 暂停
@@ -37,7 +37,6 @@
              again() {
                  window.clearTimeout(this.timer);
                  this.num = 0;
-                 this.start();
             },
         }
     }

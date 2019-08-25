@@ -1,11 +1,7 @@
 <template>
-   
     <div id="app">{{text}}
-        <counter @message2="asd"></counter>
-        
-            
+        <counter></counter> 
     </div>
-    
 </template>
 
 <script>
@@ -22,15 +18,12 @@ import counter from './counter.vue'
         },
         methods: {
             getMeaasge() {
-                
                 console.log(123)
             },
             asd() {
-                // window.clearTimeout();
-                console.log(num)
+                console.log(2233)
             }
         }
     }
-    
 </script>
 <style></style>
