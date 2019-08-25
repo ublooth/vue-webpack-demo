@@ -8,10 +8,9 @@
     </div>
 </template>
 <script>
-import { clearTimeout } from 'timers';
-// import { setTimeout } from 'timers';
     export default {
         data() {
+             this.timer = null;
             return {
                 text: '计数器:' ,
                 num:'0',
@@ -20,24 +19,25 @@ import { clearTimeout } from 'timers';
         methods: {
             // 开始
             start() {
+                // setInterval 
                 this.timer = window.setTimeout(() => {
                     this.num++;
                     this.$emit("message",this.start());
-                },1000)
+                },1000);
             },
             // 暂停
             suspend() {
-                console.log(222222211)
-                // console.log(this.suspend())
-                clearTimeout(this.timer)
+                window.clearTimeout(this.timer);
             },
             // 继续
              cont() {
-                
+                this.start();
             },
             // 重新
              again() {
-               
+                 window.clearTimeout(this.timer);
+                 this.num = 0;
+                 this.start();
             },
         }
     }

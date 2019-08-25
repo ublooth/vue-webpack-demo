@@ -1,19 +1,16 @@
 <template>
-    <div>
-        <!-- <div id="app">{{text}}</div>
-        <counter @message2="asd"></counter> -->
-        <div id="app">
-            <h1>My Todo App123!</h1>
-            <TodoList/>
-        </div>
+   
+    <div id="app">{{text}}
+        <counter @message2="asd"></counter>
+        
+            
     </div>
     
 </template>
 
 <script>
-// import counter from './counter.vue'
-// import { setTimeout } from 'timers';
-import TodoList from './components/TodoList.vue'
+import counter from './counter.vue'
+
     export default {
         data() {
             return {
@@ -21,8 +18,7 @@ import TodoList from './components/TodoList.vue'
             }
         },
         components:{
-            // counter
-            TodoList
+            counter
         },
         methods: {
             getMeaasge() {
