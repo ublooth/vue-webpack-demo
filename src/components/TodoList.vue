@@ -1,60 +1,53 @@
 <template>
   <div>
-    <BaseInputText v-model="newTodoText" placeholder="New todo" @keydown.enter="addTodo"/>
-    <ul v-if="todos.length">
-      <TodoListItem v-for="todo in todos" :key="todo.id" :todo="todo" @remove="removeTodo"/>
-    </ul>
-    <p v-else>Nothing left in the list. Add a new todo in the input above.</p>
+    <input type="text" placeholder="请输入文字" v-model.trim="box" @keyup.enter="add">
+    <div v-for="(item,index) of list" :key="index">
+      {{item.test}}
+      <input type="button" value="X" @click="del(index)">
+    </div>
+    <p v-if="hide">没有数据，请在输入框中添加数据</p>
   </div>
 </template>
-
 <script>
-import BaseInputText from "./BaseInputText.vue";
-import TodoListItem from "./TodoListItem.vue";
-
-let nextTodoId = 1;
-
 export default {
-  components: {
-    BaseInputText,
-    TodoListItem
-  },
   data() {
-    return {
-      newTodoText: "",
-      todos: [
+    return{
+      box:'',
+      obj:{},
+      hide:false,
+      list:[
         {
-          id: nextTodoId++,
-          text: "Learn Vue"
+          test:"测试11",
         },
         {
-          id: nextTodoId++,
-          text: "Learn about single-file components"
+          test:"测试22",
         },
         {
-          id: nextTodoId++,
-          text: "Fall in love"
-        }
-      ]
-    };
+          test:"测试33",
+        },
+        ],
+    }
   },
-  methods: {
-    addTodo() {
-      const trimmedText = this.newTodoText.trim();
-      if (trimmedText) {
-        this.todos.push({
-          id: nextTodoId++,
-          text: trimmedText
-        });
-        this.newTodoText = "";
+  methods:{
+    // 添加
+    add() {
+      this.obj = Object.assign({test:this.box});
+      this.list.push(this.obj);
+      this.box = '';
+      if(this.list.length > 0) {
+        this.hide = false;
       }
     },
-    removeTodo(idToRemove) {
-        console.log('1122',idToRemove)
-      this.todos = this.todos.filter(todo => {
-        return todo.id !== idToRemove;
-      });
-    }
-  }
-};
+    // 删除
+    del(index) {
+      this.list.splice(index,1);
+      if(this.list.length == 0) {
+        this.hide = true;
+      } 
+    },
+  },
+  components:{
+    
+  },
+}
 </script>
