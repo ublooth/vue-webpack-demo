@@ -1,30 +1,13 @@
 <template>
-    <div id="app">
-        <h1>My Todo App!</h1>
-        <inputBox/>
-    </div>
+    <div id="app">{{text}}</div>
 </template>
-
 <script>
-import inputBox from './components/TodoList.vue'
     export default {
         data() {
             return {
-                
-            }
-        },
-        components:{
-            inputBox
-        },
-        methods: {
-            getMeaasge() {
-                
-            },
-            asd() {
-                
+                text: '236' 
             }
         }
     }
-    
 </script>
 <style></style>
