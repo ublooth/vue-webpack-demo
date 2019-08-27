@@ -5,17 +5,20 @@ import Foo from './foo.vue'
 import Bar from './bar.vue'
 import Count from './counter.vue'
 import Todo from './todoList.vue'
+import User from './user.vue'
 
 Vue.use(VueRouter);//执行VueRouter
 
 
 const routes = [
+  { path: '/user/:id', component: User },
   { path: '/foo',//浏览器访问路径
     component: Foo//模板，对应import引入的模板信息
    },
   { path: '/bar', component: Bar },
   { path: '/counter', component: Count },
   { path: '/todo', component: Todo },
+  
 ]
 // 创建 router 实例，然后传 `routes` 配置
 const router = new VueRouter({
